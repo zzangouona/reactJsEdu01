@@ -12,5 +12,8 @@ class MyComponent extends Component {
         );
     }
 }
+MyComponent.defaultProps = {
+    name : "디폴트값"
+};
 
 export default MyComponent;//다른 파일에 import 시키기 위해 허용해준다.

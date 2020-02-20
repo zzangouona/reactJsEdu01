@@ -5,7 +5,7 @@ import MyComponent from './components/MyComponent';
 function App() {
   return (
     <React.Fragment>
-      <MyComponent name="짱유나"/>
+      <MyComponent/>
     </React.Fragment>
   );
 }
