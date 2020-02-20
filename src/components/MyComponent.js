@@ -44,14 +44,25 @@ class MyComponent extends Component {
         }
     }
 
+    handleRemove = (index)=>{
+        const {names} = this.state;
+        /* console.log("/////////")
+        console.log(...names.slice(0, index));
+        console.log(...names.slice(index+1, names.length));
+ */
+        this.setState({
+            names: this.state.names.filter((item, idx) => (idx!==index))
+        })
+    };
+
     render() {
 
         const { name, getnum } = this.props;
         const { number, message, username, names } = this.state;
-        const { handleDecrease, handleIncrease, handleChange, handleEnter } = this;
+        const { handleDecrease, handleIncrease, handleChange, handleEnter, handleRemove } = this;
 
         //const names = ["Angular","Vue","React","Ember"];
-        const nameList = names.map((num, i)=>(<li key={i}>{num}</li>))
+        const nameList = names.map((num, index)=>(<li key={index} onDoubleClick={() => handleRemove(index)}>{num}</li>))
 
         return (
             <div>
