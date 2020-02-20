@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MyComponentFunc = ({name, value}) => {
+const MyComponentFunc = ({name, getnum}) => {
     return(
         <div>
-            <h2>I'm 함수형 컴포넌트 {name}  / {value}</h2>
+            <h2>I'm 함수형 컴포넌트 {name}  / {getnum}</h2>
         </div>
     )
 }

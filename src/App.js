@@ -6,10 +6,10 @@ import MyComponentFunc from './components/MyComponentFunc';
 function App() {
   return ( 
     <React.Fragment>
-       <MyComponent name={"정윤아"} value={5} />
+       <MyComponent name={"정윤아"} getnum={5} />
 
-      <MyComponent name={"짱유나"} value={55}/>
-      <MyComponentFunc name={"정윤아"} value={5} />
+      <MyComponent name={"짱유나"} getnum={55}/>
+      <MyComponentFunc name={"정윤아"} getnum={5} />
     </React.Fragment>
   );
 }

@@ -5,7 +5,8 @@ class MyComponent extends Component {
     state = {
         number: 0,
         message: "",
-        username:""
+        username:"",
+        names :  ["Angular","Vue","React","Ember"]
     }
 
     //handleIncrease 함수
@@ -36,26 +37,35 @@ class MyComponent extends Component {
         if(e.key == 'Enter'){
             //clear
             this.setState({
+                names:this.state.names.concat(this.state.message),
                 message : ''
             })
-            this.myUser.focus();
+            //this.myUser.focus();
         }
     }
 
     render() {
 
-        const { name, value } = this.props;
-        const { number, message, username } = this.state;
+        const { name, getnum } = this.props;
+        const { number, message, username, names } = this.state;
         const { handleDecrease, handleIncrease, handleChange, handleEnter } = this;
+
+        //const names = ["Angular","Vue","React","Ember"];
+        const nameList = names.map((num, i)=>(<li key={i}>{num}</li>))
 
         return (
             <div>
                 {/* <h1>내 이름은 {this.props.name}</h1> */}
-                <h1>내 이름은 {name}/{value}</h1>
+                <h1>내 이름은 {name}/{getnum}</h1>
                 <p>입력된 Message 값은 {message}</p>
                 Message : <input type="text" name ="message" value = {message} onChange={handleChange} onKeyPress={handleEnter} /><br/>
-                UserName : <input type="text" name="username" value={username} ref={(ref)=> (this.myUser=ref)} />
+                {/* UserName : <input type="text" name="username" value={username} onChange={handleChange} ref={(ref)=> (this.myUser=ref)} /> */}
+                <ul>
+                {nameList}
+                </ul>
                 <p>Number 값 {number}</p>
+                
+                
                 <button onClick={handleIncrease}>+</button>
                 <button onClick={handleDecrease}>-</button>
             </div>
@@ -68,7 +78,7 @@ MyComponent.defaultProps = {
 
 MyComponent.propTypes = {
     name: PropTypes.string,
-    value: PropTypes.number.isRequired,
+    getnum: PropTypes.number.isRequired,
 };
 
 export default MyComponent;//다른 파일에 import 시키기 위해 허용해준다.
