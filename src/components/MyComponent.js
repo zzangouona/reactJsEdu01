@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 class MyComponent extends Component {
     state = {
         number: 0,
-        message: ""
+        message: "",
+        username:""
     }
 
     //handleIncrease 함수
@@ -23,20 +24,37 @@ class MyComponent extends Component {
         })
     }
 
+    //handleChange 함수
+    // 기능 : input과 state를 관리한다.
+    handleChange = (e)=> {(this.setState({
+        [e.target.name] : e.target.value
+    }))}
+
+    //handleEnter 함수
+    //기능 : message input에 엔터를 치면 username input 에 forcus가 된다.
+    handleEnter = (e) => {
+        if(e.key == 'Enter'){
+            //clear
+            this.setState({
+                message : ''
+            })
+            this.myUser.focus();
+        }
+    }
+
     render() {
+
         const { name, value } = this.props;
-        const { number, message } = this.state;
-        const { handleDecrease, handleIncrease } = this;
+        const { number, message, username } = this.state;
+        const { handleDecrease, handleIncrease, handleChange, handleEnter } = this;
 
         return (
             <div>
                 {/* <h1>내 이름은 {this.props.name}</h1> */}
                 <h1>내 이름은 {name}/{value}</h1>
                 <p>입력된 Message 값은 {message}</p>
-                <input type="text" name ="message" value = {message} 
-                onChange={(e)=> (this.setState({
-                    [e.target.name] : e.target.value
-                }))} />
+                Message : <input type="text" name ="message" value = {message} onChange={handleChange} onKeyPress={handleEnter} /><br/>
+                UserName : <input type="text" name="username" value={username} ref={(ref)=> (this.myUser=ref)} />
                 <p>Number 값 {number}</p>
                 <button onClick={handleIncrease}>+</button>
                 <button onClick={handleDecrease}>-</button>
