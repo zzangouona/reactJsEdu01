@@ -33,9 +33,9 @@ class MyComponent extends Component {
                 {/* <h1>내 이름은 {this.props.name}</h1> */}
                 <h1>내 이름은 {name}/{value}</h1>
                 <p>입력된 Message 값은 {message}</p>
-                <input type="text" value = {message} 
+                <input type="text" name ="message" value = {message} 
                 onChange={(e)=> (this.setState({
-                    message: e.target.value
+                    [e.target.name] : e.target.value
                 }))} />
                 <p>Number 값 {number}</p>
                 <button onClick={handleIncrease}>+</button>
