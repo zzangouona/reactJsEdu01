@@ -19,6 +19,10 @@ class MyComponent extends Component {
                         number : number + 1
                     })
                 }}>+</button>
+                <button onClick={()=>  this.setState({
+                        number : number - 1
+                    })
+                }>-</button>
             </div>
         );
     }
