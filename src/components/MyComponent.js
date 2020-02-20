@@ -2,13 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class MyComponent extends Component {
+    state = {
+        number:0
+    }
     render() {
-        const {name, number} = this.props;
+        const {name, value} = this.props;
+        const {number} = this.state;
 
         return (
             <div>
                 {/* <h1>내 이름은 {this.props.name}</h1> */}
-                <h1>내 이름은 {name}/{number}</h1>
+                <h1>내 이름은 {name}/{value}</h1>
+                <p>Number 값 {number}</p>
+                <button onClick={()=> {
+                    this.setState({
+                        number : number + 1
+                    })
+                }}>+</button>
             </div>
         );
     }
